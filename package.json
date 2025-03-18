@@ -1,0 +1,29 @@
+{
+  "name": "@darkvisitors/sdk",
+  "version": "1.0.0",
+  "description": "The official Node.js SDK for Dark Visitors",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepublishOnly": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/darkvisitors/node-sdk.git"
+  },
+  "author": "Dark Visitors <contact@darkvisitors.com>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/darkvisitors/node-sdk/issues"
+  },
+  "homepage": "https://github.com/darkvisitors/node-sdk#readme",
+  "engines": {
+    "node": ">=18"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.10",
+    "typescript": "^5.8.2"
+  }
+}
