@@ -1,6 +1,6 @@
 {
   "name": "@darkvisitors/sdk",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "The official Node.js SDK for Dark Visitors",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/darkvisitors/node-sdk.git"
+    "url": "git+https://github.com/darkvisitors/node-sdk.git"
   },
   "author": "Dark Visitors <contact@darkvisitors.com>",
   "license": "Apache-2.0",

@@ -2,7 +2,7 @@
 
 [![NPM version](https://img.shields.io/npm/v/@darkvisitors/sdk.svg)](https://npmjs.org/package/@darkvisitors/sdk) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/@darkvisitors/sdk)
 
-This library provides convenient access to the Dark Visitors REST API from server-side TypeScript or JavaScript.
+This library provides convenient access to Dark Visitors from server-side TypeScript or JavaScript.
 
 Further documentation can be found on [darkvisitors.com](https://darkvisitors.com/).
 
@@ -14,21 +14,23 @@ Install the package via npm:
 npm install @darkvisitors/sdk
 ```
 
-## Usage
+## Initializing the Client
 
-### Initializing the Client
-
-Create a new instance of `DarkVisitors` using your project's access token:
+Create a new instance of `DarkVisitors` with your project's access token:
 
 ```ts
 import { DarkVisitors } from "@darkvisitors/sdk"
 
-const darkVisitors = new DarkVisitors("your-access-token")
+const darkVisitors = new DarkVisitors("your-projects-access-token")
 ```
+
+## Agent Analytics ([Docs](https://darkvisitors.com/docs/analytics/server))
+
+Track visits from crawlers and scrapers in Dark Visitors agent analytics. In addition to server-side tracking, you can track browser-using AI agents client-side with the [JavaScript tag](https://darkvisitors.com/docs/analytics/client).
 
 ### Tracking Visits
 
-In your route, call `trackVisit` with the incoming request:
+In your route, simply call `trackVisit` with the incoming request:
 
 ```ts
 darkVisitors.trackVisit(incomingRequest)
@@ -56,6 +58,22 @@ app.get("/", (req, res) => {
 
 app.listen(3000, () => console.log("Server running on port 3000"))
 ```
+
+## Automatic Robots.txt ([Docs](https://darkvisitors.com/docs/robots-txt))
+
+Serve a continuously updating robots.txt with rules for all known agents in the Dark Visitors [agent list](https://darkvisitors.com/agents), of the specified types. This is useful if you want to opt out of LLM training or protect sensitive information.
+
+### Generating a Robots.txt
+
+```ts
+const robotsTxt = await darkVisitors.generateRobotsTxt([
+  AgentType.AIDataScraper,
+  AgentType.UndocumentedAIAgent
+])
+
+```
+
+Do this periodically (e.g. once per day), then cache and serve `robotsTxt` from your website's `/robots.txt` endpoint.
 
 ## Requirements
 
