@@ -1,5 +1,7 @@
 import { IncomingMessage } from "http"
 
+const NODE_PACKAGE_VERSION = "1.3.0"
+
 export interface Request {
     /** The path of the request's URL (e.g. "/about") */
     path: string
@@ -54,7 +56,8 @@ export class DarkVisitors {
             body: JSON.stringify({
                 request_path: request.path,
                 request_method: request.method,
-                request_headers: this.filterHeaders(request.headers)
+                request_headers: this.filterHeaders(request.headers),
+                node_package_version: NODE_PACKAGE_VERSION
             })
         }).catch(error => {
             console.error(`Dark Visitors failed to track visit: ${error.message}`)
@@ -79,7 +82,8 @@ export class DarkVisitors {
             },
             body: JSON.stringify({
                 agent_types: agentTypes,
-                disallow: disallow
+                disallow: disallow,
+                node_package_version: NODE_PACKAGE_VERSION
             })
         })
 

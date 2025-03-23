@@ -2,9 +2,7 @@
 
 [![NPM version](https://img.shields.io/npm/v/@darkvisitors/sdk.svg)](https://npmjs.org/package/@darkvisitors/sdk) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/@darkvisitors/sdk)
 
-This library provides convenient access to Dark Visitors from server-side TypeScript or JavaScript.
-
-Further documentation can be found on [darkvisitors.com](https://darkvisitors.com/).
+This library provides convenient access to [Dark Visitors](https://darkvisitors.com/) from server-side TypeScript or JavaScript.
 
 ## Installation
 
