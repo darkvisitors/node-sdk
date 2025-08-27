@@ -22,7 +22,7 @@ import { DarkVisitors } from "@darkvisitors/sdk"
 const darkVisitors = new DarkVisitors("YOUR_ACCESS_TOKEN")
 ```
 
-## Set Up Server Analytics ([Docs](https://darkvisitors.com/docs/analytics))
+## Set Up Server Agent Analytics ([Docs](https://darkvisitors.com/docs/analytics))
 
 Track crawlers, scrapers, AI agents, and other bots that don't run JavaScript.
 
@@ -55,7 +55,7 @@ app.get("/", (req, res) => {
 app.listen(3000, () => console.log("Server running on port 3000"))
 ```
 
-## Set Up Client Analytics ([Docs](https://darkvisitors.com/docs/analytics))
+## Set Up Client Agent & LLM Analytics ([Docs](https://darkvisitors.com/docs/analytics))
 
 Track browser-using AI agents (that do run JavaScript) and human LLM referrals from AI chat and search platforms (e.g. ChatGPT, Perplexity, Gemini).
 
