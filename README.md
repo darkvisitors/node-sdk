@@ -63,7 +63,7 @@ Simply copy the JavaScript tag from your project's settings page and paste it in
 
 ## Set Up Automatic Robots.txt ([Docs](https://darkvisitors.com/docs/robots-txt))
 
-Serve a continuously updating robots.txt with rules for all known agents in the Dark Visitors [agent list](https://darkvisitors.com/agents). This is useful if you want to opt out of LLM training, protect sensitive information from scraping, etc. without needing to manually update your robots.txt.
+Serve a continuously updating robots.txt with rules for entire categories of agents in the Dark Visitors [agent list](https://darkvisitors.com/agents). This is useful if you want to opt out of LLM training, protect sensitive information from scraping, etc. without needing to manually update your robots.txt.
 
 Select which `AgentType`s you want to block, and a string specifying which URLs are disallowed (e.g. "/" to disallow all paths).
 
