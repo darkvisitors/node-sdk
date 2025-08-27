@@ -14,7 +14,7 @@ npm install @darkvisitors/sdk
 
 ## Initialize the Client
 
-[Sign up](https://darkvisitors.com/sign-up) for Dark Visitors, create a project, and copy your access token from the project's settings page. Then, create a new instance of `DarkVisitors` with your project's access token.
+[Sign up](https://darkvisitors.com/sign-up) for Dark Visitors, create a project, and copy your access token from the project's settings page. Then, create a new instance of `DarkVisitors`.
 
 ```ts
 import { DarkVisitors } from "@darkvisitors/sdk"
@@ -59,11 +59,11 @@ app.listen(3000, () => console.log("Server running on port 3000"))
 
 Track browser-using AI agents (that do run JavaScript) and human LLM referrals from AI chat and search platforms (e.g. ChatGPT, Perplexity, Gemini).
 
-Simply copy the [JavaScript tag](https://darkvisitors.com/docs/analytics/client) from your project's settings page and paste it into your website's `<head>` tag.
+Simply copy the JavaScript tag from your project's settings page and paste it into your website's `<head>` tag.
 
 ## Set Up Automatic Robots.txt ([Docs](https://darkvisitors.com/docs/robots-txt))
 
-Serve a continuously updating robots.txt with rules for all known agents in the Dark Visitors [agent list](https://darkvisitors.com/agents). This is useful if you want to opt out of LLM training, protect sensitive information from scraping, etc.
+Serve a continuously updating robots.txt with rules for all known agents in the Dark Visitors [agent list](https://darkvisitors.com/agents). This is useful if you want to opt out of LLM training, protect sensitive information from scraping, etc. without needing to manually update your robots.txt.
 
 Select which `AgentType`s you want to block, and a string specifying which URLs are disallowed (e.g. "/" to disallow all paths).
 
