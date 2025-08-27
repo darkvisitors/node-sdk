@@ -4,46 +4,44 @@
 
 This library provides convenient access to [Dark Visitors](https://darkvisitors.com/) from server-side TypeScript or JavaScript.
 
-## Installation
+## Install the Package
 
-Install the package via npm:
+Download and include the package via npm:
 
 ```sh
 npm install @darkvisitors/sdk
 ```
 
-## Initializing the Client
+## Initialize the Client
 
-Create a new instance of `DarkVisitors` with your project's access token:
+[Sign up](https://darkvisitors.com/sign-up) for Dark Visitors, create a project, and copy your access token from the project's settings page. Then, create a new instance of `DarkVisitors` with your project's access token.
 
 ```ts
 import { DarkVisitors } from "@darkvisitors/sdk"
 
-const darkVisitors = new DarkVisitors("your-projects-access-token")
+const darkVisitors = new DarkVisitors("YOUR_ACCESS_TOKEN")
 ```
 
-## Agent Analytics ([Docs](https://darkvisitors.com/docs/analytics/server))
+## Set Up Server Analytics ([Docs](https://darkvisitors.com/docs/analytics))
 
-Track visits from crawlers and scrapers in Dark Visitors agent analytics. In addition to server-side tracking, you can track browser-using AI agents client-side with the [JavaScript tag](https://darkvisitors.com/docs/analytics/client).
+Track crawlers, scrapers, AI agents, and other bots that don't run JavaScript.
 
-### Tracking Visits
-
-In your route, simply call `trackVisit` with the incoming request:
+In the endpoints where you serve your pages, call `trackVisit` for each incoming pageview request.
 
 ```ts
 darkVisitors.trackVisit(incomingRequest)
 ```
 
-### Using Express Middleware
+### Use Middleware if Possible
 
-If you're using Express, you can use middleware to track all requests automatically:
+If you can, do this in middleware to track incoming requests to all pages from a single place. Here's an example with Express, but you can apply this same technique with other frameworks:
 
 ```ts
 import express from "express"
 import { DarkVisitors } from "@darkvisitors/sdk"
 
 const app = express()
-const darkVisitors = new DarkVisitors("your-access-token")
+const darkVisitors = new DarkVisitors("YOUR_ACCESS_TOKEN")
 
 app.use((req, res, next) => {
     darkVisitors.trackVisit(req)
@@ -57,21 +55,30 @@ app.get("/", (req, res) => {
 app.listen(3000, () => console.log("Server running on port 3000"))
 ```
 
-## Automatic Robots.txt ([Docs](https://darkvisitors.com/docs/robots-txt))
+## Set Up Client Analytics ([Docs](https://darkvisitors.com/docs/analytics))
 
-Serve a continuously updating robots.txt with rules for all known agents in the Dark Visitors [agent list](https://darkvisitors.com/agents), of the specified types. This is useful if you want to opt out of LLM training or protect sensitive information.
+Track browser-using AI agents (that do run JavaScript) and human LLM referrals from AI chat and search platforms (e.g. ChatGPT, Perplexity, Gemini).
 
-### Generating a Robots.txt
+Simply copy the [JavaScript tag](https://darkvisitors.com/docs/analytics/client) from your project's settings page and paste it into your website's `<head>` tag.
+
+## Set Up Automatic Robots.txt ([Docs](https://darkvisitors.com/docs/robots-txt))
+
+Serve a continuously updating robots.txt with rules for all known agents in the Dark Visitors [agent list](https://darkvisitors.com/agents). This is useful if you want to opt out of LLM training, protect sensitive information from scraping, etc.
+
+Select which `AgentType`s you want to block, and a string specifying which URLs are disallowed (e.g. "/" to disallow all paths).
 
 ```ts
 const robotsTxt = await darkVisitors.generateRobotsTxt([
   AgentType.AIDataScraper,
-  AgentType.UndocumentedAIAgent
-])
+  AgentType.Scraper,
+  AgentType.IntelligenceGatherer,
+  AgentType.SEOCrawler
+  // ...
+], "/")
 
 ```
 
-Do this periodically (e.g. once per day), then cache and serve `robotsTxt` from your website's `/robots.txt` endpoint.
+The return value is a plain text robots.txt. You can use this as is, or append additional lines to include things like sitemap links. Do this periodically (e.g. once per day), then cache and serve `robotsTxt` from your website's `/robots.txt` endpoint.
 
 ## Requirements
 

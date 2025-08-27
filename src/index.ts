@@ -15,9 +15,19 @@ export interface Request {
  * Agent types that can be controlled with robots.txt rules.
  */
 export enum AgentType {
+    AIAgent = "AI Agent",
     AIAssistant = "AI Assistant",
     AIDataScraper = "AI Data Scraper",
     AISearchCrawler = "AI Search Crawler",
+    Archiver = "Archiver",
+    DeveloperHelper = "Developer Helper",
+    Fetcher = "Fetcher",
+    HeadlessAgent = "Headless Agent",
+    IntelligenceGatherer = "Intelligence Gatherer",
+    Scraper = "Scraper",
+    SEOCrawler = "SEO Crawler",
+    SearchEngineCrawler = "Search Engine Crawler",
+    SecurityScanner = "Security Scanner",
     UndocumentedAIAgent = "Undocumented AI Agent"
 }
 
