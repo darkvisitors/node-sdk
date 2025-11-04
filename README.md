@@ -6,7 +6,7 @@ This library provides convenient access to [Dark Visitors](https://darkvisitors.
 
 ## Install the Package
 
-Download and include the package via npm:
+Download and include the package via NPM:
 
 ```sh
 npm install @darkvisitors/sdk
@@ -22,11 +22,11 @@ import { DarkVisitors } from "@darkvisitors/sdk"
 const darkVisitors = new DarkVisitors("YOUR_ACCESS_TOKEN")
 ```
 
-## Set Up Server Agent Analytics ([Docs](https://darkvisitors.com/docs/analytics))
+## How To Set Up Agent & LLM Analytics ([Full Docs](https://darkvisitors.com/docs/analytics))
 
-Track crawlers, scrapers, AI agents, and other bots that don't run JavaScript.
+Get realtime insight into the hidden ecosystem of [crawlers, scrapers, AI agents, and other bots](https://darkvisitors.com/agents) browsing your website. Measure human traffic coming from AI chat and search platforms like ChatGPT, Perplexity, and Gemini.
 
-In the endpoints where you serve your pages, call `trackVisit` for each incoming pageview request.
+To collect this data, call `trackVisit` for each incoming request in the endpoints where you serve your pages.
 
 ```ts
 darkVisitors.trackVisit(incomingRequest)
@@ -34,7 +34,9 @@ darkVisitors.trackVisit(incomingRequest)
 
 ### Use Middleware if Possible
 
-If you can, do this in middleware to track incoming requests to all pages from a single place. Here's an example with Express, but you can apply this same technique with other frameworks:
+If you can, add this in middleware to track incoming requests to all pages from a single place.
+
+Here's an example with Express, but you can apply this same technique with other frameworks:
 
 ```ts
 import express from "express"
@@ -55,17 +57,19 @@ app.get("/", (req, res) => {
 app.listen(3000, () => console.log("Server running on port 3000"))
 ```
 
-## Set Up Client Agent & LLM Analytics ([Docs](https://darkvisitors.com/docs/analytics))
+### Test Your Integration
 
-Track browser-using AI agents (that do run JavaScript) and human LLM referrals from AI chat and search platforms (e.g. ChatGPT, Perplexity, Gemini).
+- Open your project's settings page
+- Click **Send a Test Visit**
+- Click **Realtime**
 
-Simply copy the JavaScript tag from your project's settings page and paste it into your website's `<head>` tag.
+If your website is correctly connected, you should see visits from the Dark Visitor agent in the realtime timeline within a few seconds.
 
-## Set Up Automatic Robots.txt ([Docs](https://darkvisitors.com/docs/robots-txt))
+## How To Set Up Automatic Robots.txt ([Full Docs](https://darkvisitors.com/docs/robots-txt))
 
-Serve a continuously updating robots.txt with rules for entire categories of agents in the Dark Visitors [agent list](https://darkvisitors.com/agents). This is useful if you want to opt out of LLM training, protect sensitive information from scraping, etc. without needing to manually update your robots.txt.
+Protect sensitive content from unwanted access and scraping. Generate a continuously updating robots.txt that stays up to date with [all current and future bots](https://darkvisitors.com/agents) in the specified categories automatically.
 
-Select which `AgentType`s you want to block, and a string specifying which URLs are disallowed (e.g. "/" to disallow all paths).
+Use the `generateRobotsTxt` function. Select which `AgentType`s you want to block, and a string specifying which URLs are disallowed (e.g. `"/"` to disallow all paths).
 
 ```ts
 const robotsTxt = await darkVisitors.generateRobotsTxt([
@@ -78,7 +82,7 @@ const robotsTxt = await darkVisitors.generateRobotsTxt([
 
 ```
 
-The return value is a plain text robots.txt. You can use this as is, or append additional lines to include things like sitemap links. Do this periodically (e.g. once per day), then cache and serve `robotsTxt` from your website's `/robots.txt` endpoint.
+The return value is a plain text robots.txt string. Generate a `robotsTXT` periodically (e.g. once per day), then cache and serve it from your website's `/robots.txt` endpoint.
 
 ## Requirements
 
