@@ -1,6 +1,6 @@
 {
   "name": "@darkvisitors/sdk",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "description": "The official Node.js SDK for Dark Visitors: AI agent analytics (bot traffic), LLM referral tracking, automatic robots.txt",
   "keywords": [
     "ai analytics",
